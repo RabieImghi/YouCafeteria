@@ -1,0 +1,14 @@
+name: youcafeteria
+services:
+  postgres:
+    container_name: youcafeteria_db
+    image: 'postgres:17'
+    environment:
+      - 'POSTGRES_DB=youcafeteria'
+      - 'POSTGRES_PASSWORD=youcafeteria'
+      - 'POSTGRES_USER=youcafeteria'
+    ports:
+      - '5433:5432'
+volumes:
+  postgres_data:
+    driver: local
