@@ -1,0 +1,400 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1735154039852-1
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 50
+            sequenceName: app_user_seq
+            startValue: 1
+  - changeSet:
+      id: 1735154039852-2
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 50
+            sequenceName: dish_seq
+            startValue: 1
+  - changeSet:
+      id: 1735154039852-3
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 50
+            sequenceName: dish_stock_seq
+            startValue: 1
+  - changeSet:
+      id: 1735154039852-4
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 50
+            sequenceName: menu_seq
+            startValue: 1
+  - changeSet:
+      id: 1735154039852-5
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 50
+            sequenceName: notification_seq
+            startValue: 1
+  - changeSet:
+      id: 1735154039852-6
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 50
+            sequenceName: reservation_seq
+            startValue: 1
+  - changeSet:
+      id: 1735154039852-7
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 50
+            sequenceName: review_seq
+            startValue: 1
+  - changeSet:
+      id: 1735154039852-8
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 50
+            sequenceName: stock_seq
+            startValue: 1
+  - changeSet:
+      id: 1735154039852-9
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_appuser
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: username
+                  type: VARCHAR(255)
+              - column:
+                  name: first_name
+                  type: VARCHAR(255)
+              - column:
+                  name: last_name
+                  type: VARCHAR(255)
+              - column:
+                  name: password
+                  type: VARCHAR(255)
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+              - column:
+                  name: role
+                  type: SMALLINT
+            tableName: app_user
+  - changeSet:
+      id: 1735154039852-10
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_dish
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: description
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: price
+                  type: DOUBLE
+              - column:
+                  name: image
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: available
+                  type: BOOLEAN
+              - column:
+                  constraints:
+                    nullable: false
+                  name: quantity
+                  type: INT
+              - column:
+                  name: dish_type
+                  type: SMALLINT
+              - column:
+                  name: menu_id
+                  type: BIGINT
+            tableName: dish
+  - changeSet:
+      id: 1735154039852-11
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_dishstock
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: quantity
+                  type: INT
+              - column:
+                  name: dish_id
+                  type: BIGINT
+              - column:
+                  name: stock_id
+                  type: BIGINT
+            tableName: dish_stock
+  - changeSet:
+      id: 1735154039852-12
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_menu
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: description
+                  type: VARCHAR(255)
+              - column:
+                  name: menu_date
+                  type: DATETIME
+              - column:
+                  constraints:
+                    nullable: false
+                  name: active
+                  type: BOOLEAN
+              - column:
+                  constraints:
+                    nullable: false
+                  name: quantity
+                  type: INT
+            tableName: menu
+  - changeSet:
+      id: 1735154039852-13
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_notification
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: message
+                  type: VARCHAR(255)
+              - column:
+                  name: notification_date
+                  type: DATETIME
+              - column:
+                  name: app_user_id
+                  type: BIGINT
+            tableName: notification
+  - changeSet:
+      id: 1735154039852-14
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_reservation
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: reservation_date
+                  type: DATETIME
+              - column:
+                  name: app_user_id
+                  type: BIGINT
+              - column:
+                  name: dish_id
+                  type: BIGINT
+            tableName: reservation
+  - changeSet:
+      id: 1735154039852-15
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_review
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: comment
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: rating
+                  type: INT
+              - column:
+                  name: review_date
+                  type: DATETIME
+              - column:
+                  name: dish_id
+                  type: BIGINT
+            tableName: review
+  - changeSet:
+      id: 1735154039852-16
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_stock
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: description
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: quantity
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: price
+                  type: DOUBLE
+              - column:
+                  name: creation_date
+                  type: DATETIME
+            tableName: stock
+  - changeSet:
+      id: 1735154039852-17
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: dish_id
+            baseTableName: dish_stock
+            constraintName: FK_DISHSTOCK_ON_DISH
+            referencedColumnNames: id
+            referencedTableName: dish
+  - changeSet:
+      id: 1735154039852-18
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: stock_id
+            baseTableName: dish_stock
+            constraintName: FK_DISHSTOCK_ON_STOCK
+            referencedColumnNames: id
+            referencedTableName: stock
+  - changeSet:
+      id: 1735154039852-19
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: menu_id
+            baseTableName: dish
+            constraintName: FK_DISH_ON_MENU
+            referencedColumnNames: id
+            referencedTableName: menu
+  - changeSet:
+      id: 1735154039852-20
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: app_user_id
+            baseTableName: notification
+            constraintName: FK_NOTIFICATION_ON_APPUSER
+            referencedColumnNames: id
+            referencedTableName: app_user
+  - changeSet:
+      id: 1735154039852-21
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: app_user_id
+            baseTableName: reservation
+            constraintName: FK_RESERVATION_ON_APPUSER
+            referencedColumnNames: id
+            referencedTableName: app_user
+  - changeSet:
+      id: 1735154039852-22
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: dish_id
+            baseTableName: reservation
+            constraintName: FK_RESERVATION_ON_DISH
+            referencedColumnNames: id
+            referencedTableName: dish
+  - changeSet:
+      id: 1735154039852-23
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: dish_id
+            baseTableName: review
+            constraintName: FK_REVIEW_ON_DISH
+            referencedColumnNames: id
+            referencedTableName: dish
+
