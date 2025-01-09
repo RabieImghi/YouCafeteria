@@ -34,9 +34,13 @@ public class AuthController {
         this.appUserService = appUserService;
         this.appUserMapper = appUserMapper;
     }
+    @GetMapping("/test")
+    public String test(){
+        return "Test";
+    }
 
     @PostMapping("/register")
-    public ResponseEntity<RegisterResponseVM> register(@RequestBody RegisterRequestDTO registerRequestDTO){
+    public ResponseEntity<RegisterResponseVM> register( @RequestBody RegisterRequestDTO registerRequestDTO){
         AppUser appUser = appUserMapper.toAppUserFromRegisterDTO(registerRequestDTO);
         appUser = appUserService.saveAppUser(appUser);
         return ResponseEntity.ok(appUserMapper.toRegisterResponseVM(appUser));

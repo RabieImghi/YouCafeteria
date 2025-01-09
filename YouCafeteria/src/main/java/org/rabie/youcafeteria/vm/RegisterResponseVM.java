@@ -1,6 +1,9 @@
 package org.rabie.youcafeteria.vm;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.rabie.youcafeteria.domain.enums.Role;
+
 
 public class RegisterResponseVM {
     private String username;
@@ -9,6 +12,8 @@ public class RegisterResponseVM {
     private String password;
     private String email;
     private Role role;
+
+
 
     public String getUsername() {
         return username;
