@@ -1,6 +1,9 @@
 package org.rabie.youcafeteria.domain;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.rabie.youcafeteria.domain.enums.DishType;
 
 import java.util.List;
@@ -33,5 +36,4 @@ public class Dish {
 
     @ManyToOne
     private Menu menu;
-
 }

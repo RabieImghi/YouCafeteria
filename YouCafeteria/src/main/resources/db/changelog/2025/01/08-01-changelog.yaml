@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: 1735154039852-1
+      id: 1736350385625-1
       author: Youcode
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -9,7 +9,7 @@ databaseChangeLog:
             sequenceName: app_user_seq
             startValue: 1
   - changeSet:
-      id: 1735154039852-2
+      id: 1736350385625-2
       author: Youcode
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -18,7 +18,7 @@ databaseChangeLog:
             sequenceName: dish_seq
             startValue: 1
   - changeSet:
-      id: 1735154039852-3
+      id: 1736350385625-3
       author: Youcode
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -27,7 +27,7 @@ databaseChangeLog:
             sequenceName: dish_stock_seq
             startValue: 1
   - changeSet:
-      id: 1735154039852-4
+      id: 1736350385625-4
       author: Youcode
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -36,7 +36,7 @@ databaseChangeLog:
             sequenceName: menu_seq
             startValue: 1
   - changeSet:
-      id: 1735154039852-5
+      id: 1736350385625-5
       author: Youcode
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -45,7 +45,7 @@ databaseChangeLog:
             sequenceName: notification_seq
             startValue: 1
   - changeSet:
-      id: 1735154039852-6
+      id: 1736350385625-6
       author: Youcode
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -54,7 +54,7 @@ databaseChangeLog:
             sequenceName: reservation_seq
             startValue: 1
   - changeSet:
-      id: 1735154039852-7
+      id: 1736350385625-7
       author: Youcode
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -63,7 +63,7 @@ databaseChangeLog:
             sequenceName: review_seq
             startValue: 1
   - changeSet:
-      id: 1735154039852-8
+      id: 1736350385625-8
       author: Youcode
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -72,7 +72,7 @@ databaseChangeLog:
             sequenceName: stock_seq
             startValue: 1
   - changeSet:
-      id: 1735154039852-9
+      id: 1736350385625-9
       author: Youcode
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -105,7 +105,7 @@ databaseChangeLog:
                   type: SMALLINT
             tableName: app_user
   - changeSet:
-      id: 1735154039852-10
+      id: 1736350385625-10
       author: Youcode
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -150,7 +150,7 @@ databaseChangeLog:
                   type: BIGINT
             tableName: dish
   - changeSet:
-      id: 1735154039852-11
+      id: 1736350385625-11
       author: Youcode
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -176,7 +176,7 @@ databaseChangeLog:
                   type: BIGINT
             tableName: dish_stock
   - changeSet:
-      id: 1735154039852-12
+      id: 1736350385625-12
       author: Youcode
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -210,7 +210,7 @@ databaseChangeLog:
                   type: INT
             tableName: menu
   - changeSet:
-      id: 1735154039852-13
+      id: 1736350385625-13
       author: Youcode
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -234,7 +234,7 @@ databaseChangeLog:
                   type: BIGINT
             tableName: notification
   - changeSet:
-      id: 1735154039852-14
+      id: 1736350385625-14
       author: Youcode
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -258,7 +258,7 @@ databaseChangeLog:
                   type: BIGINT
             tableName: reservation
   - changeSet:
-      id: 1735154039852-15
+      id: 1736350385625-15
       author: Youcode
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -287,7 +287,7 @@ databaseChangeLog:
                   type: BIGINT
             tableName: review
   - changeSet:
-      id: 1735154039852-16
+      id: 1736350385625-16
       author: Youcode
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -321,7 +321,7 @@ databaseChangeLog:
                   type: DATETIME
             tableName: stock
   - changeSet:
-      id: 1735154039852-17
+      id: 1736350385625-17
       author: Youcode
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -332,7 +332,7 @@ databaseChangeLog:
             referencedColumnNames: id
             referencedTableName: dish
   - changeSet:
-      id: 1735154039852-18
+      id: 1736350385625-18
       author: Youcode
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -343,7 +343,7 @@ databaseChangeLog:
             referencedColumnNames: id
             referencedTableName: stock
   - changeSet:
-      id: 1735154039852-19
+      id: 1736350385625-19
       author: Youcode
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -354,7 +354,7 @@ databaseChangeLog:
             referencedColumnNames: id
             referencedTableName: menu
   - changeSet:
-      id: 1735154039852-20
+      id: 1736350385625-20
       author: Youcode
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -365,7 +365,7 @@ databaseChangeLog:
             referencedColumnNames: id
             referencedTableName: app_user
   - changeSet:
-      id: 1735154039852-21
+      id: 1736350385625-21
       author: Youcode
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -376,7 +376,7 @@ databaseChangeLog:
             referencedColumnNames: id
             referencedTableName: app_user
   - changeSet:
-      id: 1735154039852-22
+      id: 1736350385625-22
       author: Youcode
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -387,7 +387,7 @@ databaseChangeLog:
             referencedColumnNames: id
             referencedTableName: dish
   - changeSet:
-      id: 1735154039852-23
+      id: 1736350385625-23
       author: Youcode
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:

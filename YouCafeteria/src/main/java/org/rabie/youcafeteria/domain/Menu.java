@@ -1,6 +1,9 @@
 package org.rabie.youcafeteria.domain;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -23,5 +26,6 @@ public class Menu {
 
     @OneToMany(mappedBy = "menu")
     private List<Dish> dishes;
+
 
 }
