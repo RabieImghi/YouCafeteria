@@ -20,7 +20,6 @@ public class Stock {
     private String name;
     private String description;
     private int quantity;
-    private double price;
     private LocalDateTime creationDate;
 
     @OneToMany(mappedBy = "stock")

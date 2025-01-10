@@ -1,5 +1,6 @@
 package org.rabie.youcafeteria.exception;
 
+import org.rabie.youcafeteria.exception.exceptions.StockException;
 import org.rabie.youcafeteria.exception.exceptions.UserException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,9 +18,15 @@ import java.util.Objects;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(UserException.class)
-    public ResponseEntity<String> handleUserPasswordWrongException(UserException ex) {
+    public ResponseEntity<String> handleUserException(UserException ex) {
         return ResponseEntity.status(ex.getStatus()).body(ex.getMessage());
     }
+
+    @ExceptionHandler(StockException.class)
+    public ResponseEntity<String> handleStockException(StockException ex) {
+        return ResponseEntity.status(ex.getStatus()).body(ex.getMessage());
+    }
+
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, List<String>>> handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
