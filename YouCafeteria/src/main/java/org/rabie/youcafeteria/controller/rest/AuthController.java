@@ -1,9 +1,10 @@
 package org.rabie.youcafeteria.controller.rest;
 
+import jakarta.validation.Valid;
 import org.rabie.youcafeteria.controller.mapper.AppUserMapper;
 import org.rabie.youcafeteria.domain.AppUser;
-import org.rabie.youcafeteria.dto.LoginRequestDTO;
-import org.rabie.youcafeteria.dto.RegisterRequestDTO;
+import org.rabie.youcafeteria.dto.auth.LoginRequestDTO;
+import org.rabie.youcafeteria.dto.auth.RegisterRequestDTO;
 import org.rabie.youcafeteria.service.impl.AppUserServiceImpl;
 import org.rabie.youcafeteria.util.JwtUtil;
 import org.rabie.youcafeteria.vm.LoginResponseVM;
@@ -40,7 +41,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<RegisterResponseVM> register( @RequestBody RegisterRequestDTO registerRequestDTO){
+    public ResponseEntity<RegisterResponseVM> register(@Valid @RequestBody RegisterRequestDTO registerRequestDTO){
         AppUser appUser = appUserMapper.toAppUserFromRegisterDTO(registerRequestDTO);
         appUser = appUserService.saveAppUser(appUser);
         return ResponseEntity.ok(appUserMapper.toRegisterResponseVM(appUser));

@@ -26,6 +26,8 @@ public class AppUserServiceImpl  implements AppUserService, UserDetailsService {
     public AppUser saveAppUser(AppUser appUser) {
         if(appUser == null)
             throw new UserException("User is null", HttpStatus.BAD_REQUEST);
+        if(this.findByEmail(appUser.getEmail()) != null)
+            throw new UserException("Email already exists", HttpStatus.BAD_REQUEST);
         if(this.findByUsername(appUser.getUsername()) != null)
             throw new UserException("User already exists", HttpStatus.BAD_REQUEST);
         appUser.setPassword(passwordEncoder.encode(appUser.getPassword()));
@@ -40,5 +42,8 @@ public class AppUserServiceImpl  implements AppUserService, UserDetailsService {
 
     public AppUser findByUsername(String username){
         return appUserRepository.findByUsername(username).orElse(null);
+    }
+    public AppUser findByEmail(String email){
+        return appUserRepository.findByEmail(email).orElse(null);
     }
 }

@@ -29,6 +29,8 @@ public class AppUser implements UserDetails {
     private String lastName;
     private String password;
     private String email;
+
+    @Enumerated(EnumType.STRING)
     private Role role;
 
     @OneToMany(mappedBy = "appUser")
