@@ -3,12 +3,14 @@ package org.rabie.youcafeteria.dto.user;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import lombok.Getter;
 import lombok.NonNull;
+import lombok.Setter;
 import org.rabie.youcafeteria.domain.enums.Role;
 
+@Getter
+@Setter
 public class UpdateUserDTO {
-    @NotNull
-    private Long id;
     @NotBlank(message = "username is required")
     @Pattern(
             regexp = "^[a-zA-Z0-9]{5,}$",
