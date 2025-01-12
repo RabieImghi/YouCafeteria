@@ -19,7 +19,6 @@ public class Dish {
     private Long id;
     private String name;
     private String description;
-    private double price;
     private String image;
     private boolean available;
     private int quantity;
