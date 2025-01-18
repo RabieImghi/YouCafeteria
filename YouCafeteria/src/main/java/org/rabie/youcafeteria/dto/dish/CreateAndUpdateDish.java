@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.rabie.youcafeteria.domain.enums.DishType;
 
+import java.util.List;
+
 @Getter
 @Setter
 public class CreateAndUpdateDish {
@@ -22,4 +24,7 @@ public class CreateAndUpdateDish {
     private DishType dishType;
     @NotNull
     private String menuName;
+    @NotNull
+    private List<String> stockNames;
+
 }

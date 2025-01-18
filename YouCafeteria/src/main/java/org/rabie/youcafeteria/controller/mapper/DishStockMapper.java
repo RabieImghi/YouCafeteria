@@ -1,4 +1,5 @@
 package org.rabie.youcafeteria.controller.mapper;
 
-public class DishStockMapper {
+public interface DishStockMapper {
+
 }
