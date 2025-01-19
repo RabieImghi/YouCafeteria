@@ -1,5 +1,6 @@
 package org.rabie.youcafeteria.service.impl;
 
+import jakarta.transaction.Transactional;
 import org.rabie.youcafeteria.domain.DishStock;
 import org.rabie.youcafeteria.exception.exceptions.DishException;
 import org.rabie.youcafeteria.repository.DishStockRepository;
@@ -58,5 +59,9 @@ public class DishStockServiceImpl implements DishStockService {
     @Override
     public Page<DishStock> findAll(int page, int size) {
         return dishStockRepository.findAll(PageRequest.of(page, size));
+    }
+    @Transactional
+    public void deleteDishStocksByDishId(Long id) {
+        dishStockRepository.deleteDishStocksByDishId(id);
     }
 }
