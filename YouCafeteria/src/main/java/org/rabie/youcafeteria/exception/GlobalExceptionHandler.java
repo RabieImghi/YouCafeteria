@@ -30,6 +30,10 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleReservationException(ReservationException ex) {
         return ResponseEntity.status(ex.getStatus()).body(ex.getMessage());
     }
+    @ExceptionHandler(ReviewException.class)
+    public ResponseEntity<String> handleReviewException(ReviewException ex) {
+        return ResponseEntity.status(ex.getStatus()).body(ex.getMessage());
+    }
     @ExceptionHandler(DishException.class)
     public ResponseEntity<String> handleDishException(DishException ex) {
         return ResponseEntity.status(ex.getStatus()).body(ex.getMessage());
