@@ -1,7 +1,7 @@
 databaseChangeLog:
   - changeSet:
-      id: 1736350385625-1
-      author: Youcode
+      id: 1737205043656-1
+      author: M_D_LUFFY
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
         - createSequence:
@@ -9,8 +9,8 @@ databaseChangeLog:
             sequenceName: app_user_seq
             startValue: 1
   - changeSet:
-      id: 1736350385625-2
-      author: Youcode
+      id: 1737205043656-2
+      author: M_D_LUFFY
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
         - createSequence:
@@ -18,8 +18,8 @@ databaseChangeLog:
             sequenceName: dish_seq
             startValue: 1
   - changeSet:
-      id: 1736350385625-3
-      author: Youcode
+      id: 1737205043656-3
+      author: M_D_LUFFY
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
         - createSequence:
@@ -27,8 +27,8 @@ databaseChangeLog:
             sequenceName: dish_stock_seq
             startValue: 1
   - changeSet:
-      id: 1736350385625-4
-      author: Youcode
+      id: 1737205043656-4
+      author: M_D_LUFFY
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
         - createSequence:
@@ -36,8 +36,8 @@ databaseChangeLog:
             sequenceName: menu_seq
             startValue: 1
   - changeSet:
-      id: 1736350385625-5
-      author: Youcode
+      id: 1737205043656-5
+      author: M_D_LUFFY
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
         - createSequence:
@@ -45,8 +45,8 @@ databaseChangeLog:
             sequenceName: notification_seq
             startValue: 1
   - changeSet:
-      id: 1736350385625-6
-      author: Youcode
+      id: 1737205043656-6
+      author: M_D_LUFFY
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
         - createSequence:
@@ -54,8 +54,8 @@ databaseChangeLog:
             sequenceName: reservation_seq
             startValue: 1
   - changeSet:
-      id: 1736350385625-7
-      author: Youcode
+      id: 1737205043656-7
+      author: M_D_LUFFY
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
         - createSequence:
@@ -63,8 +63,8 @@ databaseChangeLog:
             sequenceName: review_seq
             startValue: 1
   - changeSet:
-      id: 1736350385625-8
-      author: Youcode
+      id: 1737205043656-8
+      author: M_D_LUFFY
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
         - createSequence:
@@ -72,8 +72,8 @@ databaseChangeLog:
             sequenceName: stock_seq
             startValue: 1
   - changeSet:
-      id: 1736350385625-9
-      author: Youcode
+      id: 1737205043656-9
+      author: M_D_LUFFY
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
         - createTable:
@@ -102,11 +102,11 @@ databaseChangeLog:
                   type: VARCHAR(255)
               - column:
                   name: role
-                  type: SMALLINT
+                  type: VARCHAR(255)
             tableName: app_user
   - changeSet:
-      id: 1736350385625-10
-      author: Youcode
+      id: 1737205043656-10
+      author: M_D_LUFFY
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
         - createTable:
@@ -124,11 +124,6 @@ databaseChangeLog:
               - column:
                   name: description
                   type: VARCHAR(255)
-              - column:
-                  constraints:
-                    nullable: false
-                  name: price
-                  type: DOUBLE
               - column:
                   name: image
                   type: VARCHAR(255)
@@ -150,8 +145,8 @@ databaseChangeLog:
                   type: BIGINT
             tableName: dish
   - changeSet:
-      id: 1736350385625-11
-      author: Youcode
+      id: 1737205043656-11
+      author: M_D_LUFFY
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
         - createTable:
@@ -176,8 +171,8 @@ databaseChangeLog:
                   type: BIGINT
             tableName: dish_stock
   - changeSet:
-      id: 1736350385625-12
-      author: Youcode
+      id: 1737205043656-12
+      author: M_D_LUFFY
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
         - createTable:
@@ -210,8 +205,8 @@ databaseChangeLog:
                   type: INT
             tableName: menu
   - changeSet:
-      id: 1736350385625-13
-      author: Youcode
+      id: 1737205043656-13
+      author: M_D_LUFFY
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
         - createTable:
@@ -234,8 +229,8 @@ databaseChangeLog:
                   type: BIGINT
             tableName: notification
   - changeSet:
-      id: 1736350385625-14
-      author: Youcode
+      id: 1737205043656-14
+      author: M_D_LUFFY
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
         - createTable:
@@ -258,8 +253,8 @@ databaseChangeLog:
                   type: BIGINT
             tableName: reservation
   - changeSet:
-      id: 1736350385625-15
-      author: Youcode
+      id: 1737205043656-15
+      author: M_D_LUFFY
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
         - createTable:
@@ -287,8 +282,8 @@ databaseChangeLog:
                   type: BIGINT
             tableName: review
   - changeSet:
-      id: 1736350385625-16
-      author: Youcode
+      id: 1737205043656-16
+      author: M_D_LUFFY
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
         - createTable:
@@ -312,17 +307,12 @@ databaseChangeLog:
                   name: quantity
                   type: INT
               - column:
-                  constraints:
-                    nullable: false
-                  name: price
-                  type: DOUBLE
-              - column:
                   name: creation_date
                   type: DATETIME
             tableName: stock
   - changeSet:
-      id: 1736350385625-17
-      author: Youcode
+      id: 1737205043656-17
+      author: M_D_LUFFY
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
         - addForeignKeyConstraint:
@@ -332,8 +322,8 @@ databaseChangeLog:
             referencedColumnNames: id
             referencedTableName: dish
   - changeSet:
-      id: 1736350385625-18
-      author: Youcode
+      id: 1737205043656-18
+      author: M_D_LUFFY
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
         - addForeignKeyConstraint:
@@ -343,8 +333,8 @@ databaseChangeLog:
             referencedColumnNames: id
             referencedTableName: stock
   - changeSet:
-      id: 1736350385625-19
-      author: Youcode
+      id: 1737205043656-19
+      author: M_D_LUFFY
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
         - addForeignKeyConstraint:
@@ -354,8 +344,8 @@ databaseChangeLog:
             referencedColumnNames: id
             referencedTableName: menu
   - changeSet:
-      id: 1736350385625-20
-      author: Youcode
+      id: 1737205043656-20
+      author: M_D_LUFFY
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
         - addForeignKeyConstraint:
@@ -365,8 +355,8 @@ databaseChangeLog:
             referencedColumnNames: id
             referencedTableName: app_user
   - changeSet:
-      id: 1736350385625-21
-      author: Youcode
+      id: 1737205043656-21
+      author: M_D_LUFFY
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
         - addForeignKeyConstraint:
@@ -376,8 +366,8 @@ databaseChangeLog:
             referencedColumnNames: id
             referencedTableName: app_user
   - changeSet:
-      id: 1736350385625-22
-      author: Youcode
+      id: 1737205043656-22
+      author: M_D_LUFFY
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
         - addForeignKeyConstraint:
@@ -387,8 +377,8 @@ databaseChangeLog:
             referencedColumnNames: id
             referencedTableName: dish
   - changeSet:
-      id: 1736350385625-23
-      author: Youcode
+      id: 1737205043656-23
+      author: M_D_LUFFY
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
         - addForeignKeyConstraint:

@@ -21,7 +21,7 @@ public class DishStockServiceImpl implements DishStockService {
     public DishStock save(DishStock dishStock) {
         if(dishStock == null)
             throw new DishException("DishStock is null", HttpStatus.BAD_REQUEST);
-        if(this.findById(dishStock.getId()) != null)
+        if(dishStock.getId() != null && this.findById(dishStock.getId()) != null)
             throw new DishException("DishStock already exists", HttpStatus.BAD_REQUEST);
         if(dishStock.getQuantity() < 1)
             throw new DishException("DishStock quantity must be greater than 1", HttpStatus.BAD_REQUEST);
