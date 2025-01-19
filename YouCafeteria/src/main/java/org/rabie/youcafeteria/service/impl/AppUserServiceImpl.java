@@ -34,6 +34,12 @@ public class AppUserServiceImpl  implements AppUserService, UserDetailsService {
     }
 
     @Override
+    public AppUser getUserByUsername(String username) {
+        return appUserRepository.findByUsername(username)
+                .orElseThrow(() -> new IllegalArgumentException("User not found with username: " + username));
+    }
+
+    @Override
     public AppUser updateAppUser(AppUser appUser) {
         if(appUser == null)
             throw new UserException("User is null", HttpStatus.BAD_REQUEST);

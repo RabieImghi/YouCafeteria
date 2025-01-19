@@ -11,4 +11,5 @@ public interface DishStockService {
     void delete(Long id);
     DishStock findById(Long id);
     Page<DishStock> findAll(int page, int size);
+    void deleteDishStocksByDishId(Long id);
 }

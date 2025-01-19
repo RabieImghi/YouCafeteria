@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DishStockRepository extends JpaRepository<DishStock, Long> {
+    void deleteDishStocksByDishId(Long id);
 }
