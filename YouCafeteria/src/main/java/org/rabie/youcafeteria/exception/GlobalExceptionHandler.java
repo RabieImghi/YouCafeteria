@@ -1,9 +1,6 @@
 package org.rabie.youcafeteria.exception;
 
-import org.rabie.youcafeteria.exception.exceptions.DishException;
-import org.rabie.youcafeteria.exception.exceptions.MenuException;
-import org.rabie.youcafeteria.exception.exceptions.StockException;
-import org.rabie.youcafeteria.exception.exceptions.UserException;
+import org.rabie.youcafeteria.exception.exceptions.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -29,6 +26,10 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(ex.getStatus()).body(ex.getMessage());
     }
 
+    @ExceptionHandler(ReservationException.class)
+    public ResponseEntity<String> handleReservationException(ReservationException ex) {
+        return ResponseEntity.status(ex.getStatus()).body(ex.getMessage());
+    }
     @ExceptionHandler(DishException.class)
     public ResponseEntity<String> handleDishException(DishException ex) {
         return ResponseEntity.status(ex.getStatus()).body(ex.getMessage());
