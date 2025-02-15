@@ -85,7 +85,7 @@ public class DishController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<Page<DishResponse>> getAllDishes(@RequestParam int page, @RequestParam int size) {
+    public ResponseEntity<Page<DishResponse>> getAllDishes(@RequestParam(defaultValue = "0") int page , @RequestParam(defaultValue = "100") int size) {
         Page<Dish> dishes = dishService.getAllDishes(page, size);
         Page<DishResponse> dishResponses = dishes.map(dishMapper::fromDishToResponse);
         return ResponseEntity.ok(dishResponses);

@@ -57,7 +57,7 @@ public class ReservationController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<Page<ReservationResponseVM>> getAllReservations(@RequestParam int page, @RequestParam int size) {
+    public ResponseEntity<Page<ReservationResponseVM>> getAllReservations(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "100") int size) {
         Page<Reservation> reservations = reservationService.getAllReservations(page, size);
         Page<ReservationResponseVM> responseVMs = reservations.map(reservationMapper::fromReservationToVM);
         return ResponseEntity.ok(responseVMs);
@@ -66,8 +66,7 @@ public class ReservationController {
     @GetMapping("/user/{username}")
     public ResponseEntity<Page<ReservationResponseVM>> getReservationsByUser(
             @PathVariable String username,
-            @RequestParam int page,
-            @RequestParam int size) {
+            @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "100") int size) {
 
         Page<ReservationResponseVM> reservations = reservationService.getReservationsByUser(username, page, size)
                 .map(reservationMapper::fromReservationToVM);
@@ -77,8 +76,7 @@ public class ReservationController {
     @GetMapping("/dish/{dishId}")
     public ResponseEntity<Page<ReservationResponseVM>> getReservationsByDish(
             @PathVariable Long dishId,
-            @RequestParam int page,
-            @RequestParam int size) {
+            @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "100") int size) {
 
         Page<ReservationResponseVM> reservations = reservationService.getReservationsByDish(dishId, page, size)
                 .map(reservationMapper::fromReservationToVM);
