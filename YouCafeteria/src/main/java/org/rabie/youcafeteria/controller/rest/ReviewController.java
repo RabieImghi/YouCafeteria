@@ -55,7 +55,7 @@ public class ReviewController {
 
     @GetMapping("/dish/{dishName}")
     public ResponseEntity<Page<ReviewResponseVM>> getReviewsByDish(
-            @PathVariable String dishName, @RequestParam int page, @RequestParam int size) {
+            @PathVariable String dishName, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "100") int size) {
         Page<ReviewResponseVM> reviews = reviewService.getReviewsByDish(dishName, page, size)
                 .map(reviewMapper::fromReviewToVM);
         return ResponseEntity.ok(reviews);

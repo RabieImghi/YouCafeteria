@@ -37,24 +37,24 @@ public class MenuController {
     }
 
 
-        @DeleteMapping("/delete/{name}")
-        public ResponseEntity<String> deleteMenu(@PathVariable String name) {
-            menuService.delete(name);
-            return ResponseEntity.ok("Menu deleted successfully");
-        }
+    @DeleteMapping("/delete/{name}")
+    public ResponseEntity<String> deleteMenu(@PathVariable String name) {
+        menuService.delete(name);
+        return ResponseEntity.ok("Menu deleted successfully");
+    }
 
-        @GetMapping("/find/{name}")
-        public ResponseEntity<MenuResponse> findMenuByName(@PathVariable String name) {
-            Menu menu = menuService.findByName(name);
-            if (menu == null) {
-                return ResponseEntity.notFound().build();
-            }
-            return ResponseEntity.ok(menuMapper.fromMenuToResponse(menu));
+    @GetMapping("/find/{name}")
+    public ResponseEntity<MenuResponse> findMenuByName(@PathVariable String name) {
+        Menu menu = menuService.findByName(name);
+        if (menu == null) {
+            return ResponseEntity.notFound().build();
         }
+        return ResponseEntity.ok(menuMapper.fromMenuToResponse(menu));
+    }
 
 
     @GetMapping("/all")
-    public ResponseEntity<Page<MenuResponse>> findAllMenus(@RequestParam int page, @RequestParam int size) {
+    public ResponseEntity<Page<MenuResponse>> findAllMenus(@RequestParam(defaultValue = "0") int page , @RequestParam(defaultValue = "100") int size) {
         Page<Menu> menus = menuService.findAll(page, size);
         Page<MenuResponse> menuResponses = menus.map(menuMapper::fromMenuToResponse);
         return ResponseEntity.ok(menuResponses);
