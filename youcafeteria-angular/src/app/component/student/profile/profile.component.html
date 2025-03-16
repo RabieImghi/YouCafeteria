@@ -1,0 +1,95 @@
+<app-header></app-header>
+
+<!-- Hero Section -->
+<section class="relative h-[250px] flex items-center">
+  <div class="absolute inset-0 bg-gray-800">
+    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
+         alt="Profile background" class="w-full h-full object-cover opacity-50">
+  </div>
+  <div class="container mx-auto px-4 relative z-10 text-center">
+    <h1 class="text-4xl font-bold text-white mb-2">Profile</h1>
+    <p class="text-xl text-white max-w-2xl mx-auto">
+      Manage your account information and preferences
+    </p>
+  </div>
+</section>
+
+<!-- Profile Section -->
+<section class="py-16">
+  <div class="container mx-auto px-4 max-w-3xl bg-white p-8 shadow-lg rounded-lg">
+    
+    <!-- Profile View Mode -->
+    <div *ngIf="!isEditing" class="space-y-4">
+      <h2 class="text-2xl font-semibold">Profile Information</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div><strong>Full Name:</strong> {{ profile.fullName }}</div>
+        <div><strong>Email:</strong> {{ profile.email }}</div>
+        <div><strong>Student ID:</strong> {{ profile.studentId }}</div>
+        <div><strong>Department:</strong> {{ profile.department }}</div>
+        <div><strong>Year:</strong> {{ profile.year }}</div>
+        <div><strong>Dietary Preferences:</strong> {{ profile.dietaryPreferences }}</div>
+      </div>
+
+      <button (click)="toggleEdit()" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
+        Edit Profile
+      </button>
+    </div>
+
+    <!-- Profile Edit Mode -->
+    <div *ngIf="isEditing" class="space-y-4">
+      <h2 class="text-2xl font-semibold">Edit Profile</h2>
+      
+      <form (ngSubmit)="saveProfile()" class="space-y-4">
+        <div class="grid grid-cols-1 gap-4">
+          <label>
+            Full Name
+            <input [(ngModel)]="profile.fullName" name="fullName" required 
+                   class="w-full border rounded-md p-2">
+          </label>
+          
+          <label>
+            Email
+            <input [(ngModel)]="profile.email" name="email" type="email" required 
+                   class="w-full border rounded-md p-2">
+          </label>
+
+          <label>
+            Student ID
+            <input [(ngModel)]="profile.studentId" name="studentId" required 
+                   class="w-full border rounded-md p-2">
+          </label>
+
+          <label>
+            Department
+            <input [(ngModel)]="profile.department" name="department" required 
+                   class="w-full border rounded-md p-2">
+          </label>
+
+          <label>
+            Year
+            <input [(ngModel)]="profile.year" name="year" required 
+                   class="w-full border rounded-md p-2">
+          </label>
+
+          <label>
+            Dietary Preferences
+            <input [(ngModel)]="profile.dietaryPreferences" name="dietaryPreferences" 
+                   class="w-full border rounded-md p-2">
+          </label>
+        </div>
+
+        <div class="flex justify-end gap-4">
+          <button type="button" (click)="toggleEdit()" 
+                  class="border border-gray-300 px-4 py-2 rounded-md">
+            Cancel
+          </button>
+          <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
+            Save Changes
+          </button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</section>

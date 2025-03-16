@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import AOS from 'aos';
 
 @Component({
   selector: 'app-hero',
@@ -10,5 +11,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './hero.component.html',
 })
 export class HeroComponent {
-  
+  ngOnInit() {
+    AOS.init();
+  }
 }

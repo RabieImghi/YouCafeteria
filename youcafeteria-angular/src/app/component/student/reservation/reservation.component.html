@@ -1,0 +1,226 @@
+<app-header></app-header>
+
+<main class="py-12 bg-gray-50">
+    <section class="relative h-[300px] flex items-center">
+        <div class="absolute inset-0 z-0 bg-gray-800">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80" alt="Reservation background" class="w-full h-full object-cover opacity-50">
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10 text-center">
+          <h1 class="text-4xl font-bold text-white mb-4" data-aos="fade-down" data-aos-duration="1000">
+            Make a Reservation
+          </h1>
+          <p class="text-xl text-white max-w-2xl mx-auto" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+            Reserve your meal for today's menu
+          </p>
+        </div>
+      </section>
+      <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-10">
+              <h2 class="text-3xl font-bold mb-2" data-aos="fade-up">Today's Menu</h2>
+              <p class="text-gray-600" data-aos="fade-up" data-aos-delay="100">
+                <span id="today-date" class="font-medium">{{ todayDate }}</span> - Select your meal and reserve
+              </p>
+            </div>
+        
+            <!-- Menu Display -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              <!-- Main Dishes -->
+              <div class="border rounded-lg bg-white overflow-hidden p-4" data-aos="fade-up">
+                <h3 class="text-xl font-semibold mb-4">Main Dish</h3>
+                <div *ngFor="let dish of todayMenu.mainDishes" class="p-2 border rounded-md cursor-pointer hover:bg-gray-100"
+                     [class.border-blue-500]="selectedMainDish === dish"
+                     (click)="selectDish('main', dish)">
+                  <img [src]="dish.image" class="w-full h-32 object-cover rounded-md mb-2">
+                  <p class="font-medium">{{ dish.name }}</p>
+                </div>
+              </div>
+        
+              <!-- Salads -->
+              <div class="border rounded-lg bg-white overflow-hidden p-4" data-aos="fade-up">
+                <h3 class="text-xl font-semibold mb-4">Salad</h3>
+                <div *ngFor="let salad of todayMenu.salads" class="p-2 border rounded-md cursor-pointer hover:bg-gray-100"
+                     [class.border-blue-500]="selectedSalad === salad"
+                     (click)="selectDish('salad', salad)">
+                  <img [src]="salad.image" class="w-full h-32 object-cover rounded-md mb-2">
+                  <p class="font-medium">{{ salad.name }}</p>
+                </div>
+              </div>
+        
+              <!-- Desserts -->
+              <div class="border rounded-lg bg-white overflow-hidden p-4" data-aos="fade-up">
+                <h3 class="text-xl font-semibold mb-4">Dessert</h3>
+                <div *ngFor="let dessert of todayMenu.desserts" class="p-2 border rounded-md cursor-pointer hover:bg-gray-100"
+                     [class.border-blue-500]="selectedDessert === dessert"
+                     (click)="selectDish('dessert', dessert)">
+                  <img [src]="dessert.image" class="w-full h-32 object-cover rounded-md mb-2">
+                  <p class="font-medium">{{ dessert.name }}</p>
+                </div>
+              </div>
+            </div>
+        
+            <!-- Reservation Button -->
+            <div class="text-center mt-8">
+              <button class="bg-[#007bff] text-white py-2 px-6 rounded-md text-lg"
+                      [disabled]="!selectedMainDish || !selectedSalad || !selectedDessert"
+                      (click)="reserveMeal()">
+                Reserve Now
+              </button>
+            </div>
+          </div>
+        
+      </section>
+
+      <section class="py-8 pb-16">
+        <div class="container mx-auto px-4">
+          <h2 class="text-2xl font-bold mb-8 text-center" data-aos="fade-up">Your Existing Reservations</h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Reservation 1 -->
+            <div class="border rounded-lg bg-white overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+              <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=300&q=80" alt="Italian Cuisine" class="w-full h-32 object-cover">
+              <div class="p-6">
+                <div class="flex justify-between items-center pb-2">
+                  <h3 class="text-xl font-semibold">Reservation #1</h3>
+                  <span class="text-sm px-2 py-1 rounded-full bg-green-100 text-green-800">
+                    Confirmed
+                  </span>
+                </div>
+                <p class="text-gray-500 mb-4">Monday Menu</p>
+                
+                <div class="space-y-3">
+                  <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-gray-500"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                    <span>2025-03-15</span>
+                  </div>
+                  <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-gray-500"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span>12:30 PM</span>
+                  </div>
+                  <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-gray-500"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    <span>1 Person</span>
+                  </div>
+                  <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-gray-500"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2"/><path d="M18 15a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/><path d="M18 8a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>
+                    <span>Pasta Primavera</span>
+                  </div>
+                </div>
+              </div>
+              <div class="px-6 pb-6 pt-0 flex justify-between gap-4">
+                <button class="flex-1 border border-gray-300 rounded-md py-2 hover:bg-gray-50 transition-colors" onclick="viewReservation(1)">
+                  View Details
+                </button>
+              </div>
+            </div>
+            
+            <!-- Reservation 2 -->
+            <div class="border rounded-lg bg-white overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+              <img src="https://images.unsplash.com/photo-1523294587484-bae6cc870010?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=300&q=80" alt="Mediterranean" class="w-full h-32 object-cover">
+              <div class="p-6">
+                <div class="flex justify-between items-center pb-2">
+                  <h3 class="text-xl font-semibold">Reservation #2</h3>
+                  <span class="text-sm px-2 py-1 rounded-full bg-yellow-100 text-yellow-800">
+                    Pending
+                  </span>
+                </div>
+                <p class="text-gray-500 mb-4">Wednesday Menu</p>
+                
+                <div class="space-y-3">
+                  <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-gray-500"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                    <span>2025-03-17</span>
+                  </div>
+                  <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-gray-500"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span>1:00 PM</span>
+                  </div>
+                  <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-gray-500">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4"  stroke-linejoin="round" class="mr-2 text-gray-500" />
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    <span>2 People</span>
+                  </div>
+                  <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-gray-500"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2"/><path d="M18 15a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/><path d="M18 8a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>
+                    <span>Greek Souvlaki</span>
+                  </div>
+                </div>
+              </div>
+              <div class="px-6 pb-6 pt-0 flex justify-between gap-4">
+                <button class="flex-1 border border-gray-300 rounded-md py-2 hover:bg-gray-50 transition-colors" onclick="viewReservation(2)">
+                  View Details
+                </button>
+              </div>
+            </div>
+            
+            <!-- Reservation 3 -->
+            <div class="border rounded-lg bg-white overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+              <img src="https://images.unsplash.com/photo-1512003867696-6d5ce6835040?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=300&q=80" alt="Asian Fusion" class="w-full h-32 object-cover">
+              <div class="p-6">
+                <div class="flex justify-between items-center pb-2">
+                  <h3 class="text-xl font-semibold">Reservation #3</h3>
+                  <span class="text-sm px-2 py-1 rounded-full bg-green-100 text-green-800">
+                    Confirmed
+                  </span>
+                </div>
+                <p class="text-gray-500 mb-4">Tuesday Menu</p>
+                
+                <div class="space-y-3">
+                  <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-gray-500"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                    <span>2025-03-20</span>
+                  </div>
+                  <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-gray-500"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span>12:00 PM</span>
+                  </div>
+                  <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-gray-500"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    <span>1 Person</span>
+                  </div>
+                  <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-gray-500"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2"/><path d="M18 15a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/><path d="M18 8a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>
+                    <span>Beef Stir Fry</span>
+                  </div>
+                </div>
+              </div>
+              <div class="px-6 pb-6 pt-0 flex justify-between gap-4">
+                <button class="flex-1 border border-gray-300 rounded-md py-2 hover:bg-gray-50 transition-colors" onclick="viewReservation(3)">
+                  View Details
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+      
+    <div id="reservation-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg max-w-md w-full p-6" data-aos="zoom-in" data-aos-duration="300">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xl font-semibold" id="modal-title">Reservation Details</h3>
+            <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+            </button>
+          </div>
+          
+          <div class="space-y-4 py-4" id="modal-content">
+            <!-- Content will be dynamically populated -->
+          </div>
+          
+          <div class="flex justify-end mt-4">
+            <button id="modal-cancel-btn" class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-colors">
+              Cancel Reservation
+            </button>
+          </div>
+        </div>
+    </div>
+    
+ 
+
+</main>

@@ -1,0 +1,39 @@
+<app-header/>
+<!-- Hero Section -->
+<section class="relative h-[380px] flex items-center">
+<div class="absolute inset-0 z-0 bg-gray-800">
+    <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80" alt="Menu background" class="w-full h-full object-cover opacity-50">
+</div>
+
+<div class="container mx-auto px-4 relative z-10 text-center">
+    <h1 class="text-4xl font-bold text-white mb-4" data-aos="fade-down" data-aos-duration="1000">
+    Our Menus
+    </h1>
+    <p class="text-xl text-white max-w-2xl mx-auto" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+    Explore our weekly menu options and find your favorite meals.
+    </p>
+</div>
+</section>
+
+<!-- Menu List Section -->
+<section class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Loop through menu items dynamically -->
+        <div *ngFor="let menu of menus" class="border rounded-lg overflow-hidden flex flex-col h-full" data-aos="fade-up">
+          <img [src]="menu.image" alt="{{ menu.title }}" class="w-full h-48 object-cover">
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-xl font-semibold mb-2">{{ menu.title }}</h3>
+            <p class="text-gray-600 mb-4 flex-grow">{{ menu.description }}</p>
+            <div class="mt-auto">
+              <a [routerLink]="[menu.route]" class="w-full block border border-gray-300 rounded-md py-2 text-center hover:bg-gray-50 transition-colors">
+                Details
+              </a>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </section>
