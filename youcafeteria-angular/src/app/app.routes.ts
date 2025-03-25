@@ -4,7 +4,7 @@ import { HomeComponent } from './component/student/home/home.component';
 import { MenuComponent } from './component/student/menu/menu.component';
 import { MenuDetailComponent } from './component/student/menu-detail/menu-detail.component';
 import { ProfileComponent } from './component/student/profile/profile.component';
-import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { MainComponent } from './component/admin/main/main.component';
 import { ReservationComponent } from './component/student/reservation/reservation.component';
 import { ContactComponent } from './component/student/contact/contact.component';
 import { isAuthenticatedGuardGuard } from './guard/is-authenticated-guard.guard';
@@ -48,7 +48,7 @@ export const routes: Routes = [
     },
     {
         path: 'dashboard',
-        component: DashboardComponent,
+        component: MainComponent,
         canActivate: [isAuthenticatedGuardGuard]
     }
 ];
