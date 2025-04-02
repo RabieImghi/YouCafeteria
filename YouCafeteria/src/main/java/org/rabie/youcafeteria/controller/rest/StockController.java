@@ -24,7 +24,6 @@ public class StockController {
     }
 
     @PostMapping("/create")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<StockResponseVM> createStock(@Valid @RequestBody CreateAndUpdateStockDTO createAndUpdateStockDTO) {
         Stock stock = stockMapper.toStockFromStockDTO(createAndUpdateStockDTO);
         Stock savedStock = stockService.saveStock(stock);
@@ -32,14 +31,12 @@ public class StockController {
     }
 
     @DeleteMapping("/delete/{name}")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> deleteStock(@PathVariable String name) {
         stockService.deleteStock(name);
         return ResponseEntity.ok("Stock deleted successfully");
     }
 
     @PutMapping("/update")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<StockResponseVM> updateStock(@Valid @RequestBody CreateAndUpdateStockDTO createAndUpdateStockDTO) {
         Stock stock = stockMapper.toStockFromStockDTO(createAndUpdateStockDTO);
         Stock savedStock = stockService.updateStock(stock);
@@ -47,14 +44,12 @@ public class StockController {
     }
 
     @GetMapping("/details/{name}")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<StockResponseVM> getStock(@PathVariable String name) {
         Stock stock = stockService.getStock(name);
         return ResponseEntity.ok(stockMapper.toStockResponseVM(stock));
     }
 
     @GetMapping("/all")
-    @PreAuthorize("hasRole('CHEF')")
     public ResponseEntity<Page<StockResponseVM>> getAllStocks(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "100") int size) {
         Page<Stock> stockList = stockService.getAllStocks(page, size);
         return ResponseEntity.ok(stockList.map(stockMapper::toStockResponseVM));

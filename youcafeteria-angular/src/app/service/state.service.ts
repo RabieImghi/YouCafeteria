@@ -32,6 +32,18 @@ export class StateService {
         localStorage.removeItem(key);
     }
     
+    getUsername(): string  {
+        const token = this.loadFromStorage('auth_access_token');
+        try {
+          const payload = token.split('.')[1];
+          const decodedPayload = JSON.parse(atob(payload));
+          return decodedPayload.sub || '';
+        } catch (error) {
+          console.error('Error decoding token:', error);
+          return '';
+        }
+      }
+      
 
     // **Logout**
     logout() {

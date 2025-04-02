@@ -6,9 +6,13 @@ import { MenuDetailComponent } from './component/student/menu-detail/menu-detail
 import { ProfileComponent } from './component/student/profile/profile.component';
 import { MainComponent } from './component/admin/main/main.component';
 import { ReservationComponent } from './component/student/reservation/reservation.component';
-import { ContactComponent } from './component/student/contact/contact.component';
 import { isAuthenticatedGuardGuard } from './guard/is-authenticated-guard.guard';
 import { isNotAuthenticatedGuardGuard } from './guard/is-not-authenticated-guard.guard';
+import { DashboardComponent } from './component/admin/dashboard/dashboard.component';
+import { UsersComponent } from './component/admin/users/users.component'; 
+import { StockComponent } from './component/admin/stock/stock.component';
+import { MenuAdminComponent } from './component/admin/menu/menu-admin.component';
+import { PlatComponent } from './component/admin/plat/plat.component';
 
 export const routes: Routes = [
     {
@@ -37,11 +41,6 @@ export const routes: Routes = [
         canActivate: [isAuthenticatedGuardGuard]
     },
     {
-        path: 'contact',
-        component: ContactComponent,
-        canActivate: [isAuthenticatedGuardGuard]
-    },
-    {
         path: 'profile',
         component: ProfileComponent,
         canActivate: [isAuthenticatedGuardGuard]
@@ -49,6 +48,28 @@ export const routes: Routes = [
     {
         path: 'dashboard',
         component: MainComponent,
-        canActivate: [isAuthenticatedGuardGuard]
+        canActivate: [isAuthenticatedGuardGuard],
+        children: [
+            {
+                path: '',
+                component: DashboardComponent,
+            },
+            {
+                path: 'users',
+                component: UsersComponent,
+            },
+            {
+                path: 'menu',
+                component: MenuAdminComponent,
+            },
+            {
+                path: 'stock',
+                component: StockComponent,
+            },
+            {
+                path: 'plat',
+                component: PlatComponent,
+            }
+        ]
     }
 ];

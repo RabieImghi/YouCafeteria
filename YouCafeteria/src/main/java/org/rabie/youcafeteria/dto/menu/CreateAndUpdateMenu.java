@@ -1,10 +1,8 @@
 package org.rabie.youcafeteria.dto.menu;
 
-import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
-import org.rabie.youcafeteria.domain.Dish;
 
 import java.time.LocalDateTime;
 import java.util.List;

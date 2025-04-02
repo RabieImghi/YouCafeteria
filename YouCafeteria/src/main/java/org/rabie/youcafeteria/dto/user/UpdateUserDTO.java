@@ -21,12 +21,7 @@ public class UpdateUserDTO {
     private String firstName;
     @NotBlank(message = "lastName is required")
     private String lastName;
-    @NotBlank(message = "Password is required")
-    @Pattern(
-            regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@#%^&+=!]).{8,}$",
-            message = "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, 1 special character (@#%^&+=!), and be at least 8 characters long"
-    )
-    private String password;
+
     @NotBlank(message = "email is required")
     @Pattern(
             regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$",

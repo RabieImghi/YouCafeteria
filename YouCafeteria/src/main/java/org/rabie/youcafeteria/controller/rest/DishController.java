@@ -90,6 +90,13 @@ public class DishController {
         Page<DishResponse> dishResponses = dishes.map(dishMapper::fromDishToResponse);
         return ResponseEntity.ok(dishResponses);
     }
+    @GetMapping("/menu/{menuName}")
+    public ResponseEntity<Page<DishResponse>> getDishesByMenu(
+            @PathVariable String menuName,
+            @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "100") int size) {
+        Page<DishResponse> dishes = dishService.getDishesByMenu(menuName, page, size);
+        return ResponseEntity.ok(dishes);
+    }
 
 
 }

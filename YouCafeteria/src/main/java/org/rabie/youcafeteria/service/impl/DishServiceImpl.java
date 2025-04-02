@@ -1,9 +1,11 @@
 package org.rabie.youcafeteria.service.impl;
 
+import org.rabie.youcafeteria.controller.mapper.DishMapper;
 import org.rabie.youcafeteria.domain.Dish;
 import org.rabie.youcafeteria.exception.exceptions.DishException;
 import org.rabie.youcafeteria.repository.DishRepository;
 import org.rabie.youcafeteria.service.DishService;
+import org.rabie.youcafeteria.vm.dish.DishResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
@@ -12,9 +14,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class DishServiceImpl implements DishService {
     private final DishRepository dishRepository;
+    private final DishMapper dishMapper;
 
-    public DishServiceImpl(DishRepository dishRepository) {
+    public DishServiceImpl(DishRepository dishRepository, DishMapper dishMapper) {
         this.dishRepository = dishRepository;
+        this.dishMapper = dishMapper;
     }
 
     @Override
@@ -59,5 +63,10 @@ public class DishServiceImpl implements DishService {
         return dishRepository.findAll(PageRequest.of(page, size));
     }
 
+
+    public Page<DishResponse> getDishesByMenu(String menuName, int page, int size) {
+        return dishRepository.findDishesByMenuName(menuName, PageRequest.of(page, size)).map(dishMapper::fromDishToResponse);
+
+    }
 
 }

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface ReservationService {
-    Reservation createReservation(Reservation reservation);
+    Reservation createReservation(Reservation reservation,String username);
     Reservation updateReservation(Reservation reservation);
     void cancelReservation(Long id);
     Reservation getReservation(Long id);

@@ -30,16 +30,13 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public Reservation createReservation(Reservation reservation) {
+    public Reservation createReservation(Reservation reservation, String username) {
         if (reservation == null) {
             throw new ReservationException("Reservation is null", HttpStatus.BAD_REQUEST);
         }
         if (reservation.getReservationDate().isBefore(LocalDateTime.now())) {
             throw new ReservationException("Reservation date must be in the future", HttpStatus.BAD_REQUEST);
         }
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        String username = userDetails.getUsername();
         AppUser user = appUserService.getUserByUsername(username);
         Dish dish = dishService.getDish(reservation.getDish().getName());
         LocalDateTime reservationDate = reservation.getReservationDate().toLocalDate().atStartOfDay();
@@ -102,17 +99,8 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public void cancelReservation(Long id) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        String username = userDetails.getUsername();
-
         Reservation reservation = reservationRepository.findById(id)
                 .orElseThrow(() -> new ReservationException("Reservation not found", HttpStatus.NOT_FOUND));
-
-        if (!reservation.getAppUser().getUsername().equals(username)) {
-            throw new ReservationException("You are not authorized to cancel this reservation", HttpStatus.FORBIDDEN);
-        }
-
         reservationRepository.delete(reservation);
     }
 

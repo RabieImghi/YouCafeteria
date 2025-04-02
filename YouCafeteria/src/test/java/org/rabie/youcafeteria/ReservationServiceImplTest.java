@@ -81,7 +81,7 @@ class ReservationServiceImplTest {
         when(reservationRepository.countByAppUserAndDishTypeAndDate(any(), any(), any(), any())).thenReturn(0L);
         when(reservationRepository.save(any(Reservation.class))).thenReturn(reservation);
 
-        Reservation result = reservationService.createReservation(reservation);
+        Reservation result = reservationService.createReservation(reservation, "testuser");
 
         assertNotNull(result);
         assertEquals("Pasta", result.getDish().getName());

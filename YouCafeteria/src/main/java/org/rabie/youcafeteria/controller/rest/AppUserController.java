@@ -30,21 +30,18 @@ public class AppUserController {
 
 
     @GetMapping("")
-    @PreAuthorize("hasRole('STUDENT')")
     public Page<RegisterResponseVM> get(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "100") int size) {
         return appUserService.getAllAppUsers(page, size).map(appUserMapper::toRegisterResponseVM);
     }
 
 
     @PutMapping("update")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<RegisterResponseVM> update(@Valid @RequestBody UpdateUserDTO updateUserDTO) {
+    public ResponseEntity<RegisterResponseVM>   update(@Valid @RequestBody UpdateUserDTO updateUserDTO) {
         AppUser appUser = appUserMapper.toAppUserFromUpdateDTO(updateUserDTO);
         return ResponseEntity.ok(appUserMapper.toRegisterResponseVM(appUserService.updateAppUser(appUser)));
     }
 
     @GetMapping("/{username}")
-    @PreAuthorize("hasRole('STUDENT')")
     public RegisterResponseVM get(@PathVariable String username) {
         RegisterResponseVM responseVM = appUserMapper.toRegisterResponseVM(appUserService.findByUsername(username));
         if(responseVM == null)
@@ -54,13 +51,11 @@ public class AppUserController {
 
 
     @DeleteMapping("delete/{username}")
-    @PreAuthorize("hasRole('ADMIN')")
     public void delete(@PathVariable String username) {
         appUserService.deleteAppUser(username);
     }
 
     @PutMapping("update/profile")
-    @PreAuthorize("hasRole('STUDENT')")
     public ResponseEntity<RegisterResponseVM> updateProfile(@Valid @RequestBody UpdateUserDTO updateUserDTO) {
         AppUser AuthenticationUser = authenticationUserService.getAuthenticatedUser();
         AppUser appUser = appUserMapper.toAppUserFromUpdateDTO(updateUserDTO);

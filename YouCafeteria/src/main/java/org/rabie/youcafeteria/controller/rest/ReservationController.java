@@ -22,16 +22,24 @@ public class ReservationController {
         this.reservationMapper = reservationMapper;
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<ReservationResponseVM> createReservation(@Valid @RequestBody CreateAndUpdateReservationDTO dto) {
+    @PostMapping("/create/{username}")
+    public ResponseEntity<ReservationResponseVM> createReservation(
+            @PathVariable String username,
+            @Valid @RequestBody CreateAndUpdateReservationDTO dto) {
+
         Reservation reservation = new Reservation();
         reservation.setReservationDate(dto.getReservationDate());
+
         Dish dish = new Dish();
         dish.setName(dto.getDishName());
         reservation.setDish(dish);
-        Reservation createdReservation = reservationService.createReservation(reservation);
+
+        // ⬅️ Pass username to service
+        Reservation createdReservation = reservationService.createReservation(reservation, username);
+
         return ResponseEntity.ok(reservationMapper.fromReservationToVM(createdReservation));
     }
+
     @PutMapping("/update")
     public ResponseEntity<ReservationResponseVM> updateReservation(@Valid @RequestBody CreateAndUpdateReservationDTO dto) {
         Reservation reservation = new Reservation();
