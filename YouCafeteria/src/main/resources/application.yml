@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/youcafeteria
+    username: youcafeteria
+    password: youcafeteria
+    driver-class-name: org.postgresql.Driver
+
+  liquibase:
+    change-log: db/changelog/master.yaml
+    enabled: true
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+    properties:
+      hibernate:
+        default_schema: public
+
+logging:
+  level:
+    org.springframework.security: DEBUG

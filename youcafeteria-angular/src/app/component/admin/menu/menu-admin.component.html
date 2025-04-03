@@ -1,0 +1,99 @@
+<div class="flex-1 overflow-auto p-6">
+    <!-- Breadcrumb -->
+    <div class="flex items-center text-sm text-gray-500 mb-4">
+      <a href="#" class="hover:text-primary">Home</a>
+      <i class="fas fa-chevron-right mx-2 text-xs"></i>
+      <a href="#" class="hover:text-primary">Dashboard</a>
+      <i class="fas fa-chevron-right mx-2 text-xs"></i>
+      <span class="text-gray-700">Menus</span>
+    </div>
+  
+    <!-- Page Title -->
+    <h1 class="text-2xl font-bold text-gray-800 mb-6">Menus</h1>
+  
+    <div class="flex justify-end mb-4">
+      <button
+        (click)="showAddForm = true"
+        class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+      >
+        + Add Menu
+      </button>
+    </div>
+  
+    <!-- Page Content -->
+    <div class="container mx-auto p-6 bg-white rounded-lg shadow-md my-10">
+      <h1 class="text-2xl font-bold text-gray-800 mb-6">Menus Table</h1>
+      <div class="overflow-x-auto">
+        <table class="min-w-full bg-white border border-gray-200">
+          <thead>
+            <tr class="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
+              <th class="py-3 px-4 text-left">Name</th>
+              <th class="py-3 px-4 text-left">Description</th>
+              <th class="py-3 px-4 text-left">Date</th>
+              <th class="py-3 px-4 text-left">Quantity</th>
+              <th class="py-3 px-4 text-left">Active</th>
+              <th class="py-3 px-4 text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-600 text-sm">
+            <tr *ngFor="let menu of menus" class="border-b border-gray-200 hover:bg-gray-50">
+              <td class="py-3 px-4">{{ menu.name }}</td>
+              <td class="py-3 px-4">{{ menu.description }}</td>
+              <td class="py-3 px-4">{{ menu.menuDate | date: 'short' }}</td>
+              <td class="py-3 px-4">{{ menu.quantity }}</td>
+              <td class="py-3 px-4">{{ menu.active ? 'Yes' : 'No' }}</td>
+              <td class="py-3 px-4 text-center">
+                <div class="flex items-center justify-center space-x-2">
+                  <button (click)="openEditModal(menu)" class="text-gray-500 hover:text-blue-500">✏️</button>
+                  <button (click)="deleteMenu(menu.name)" class="text-gray-500 hover:text-red-500">🗑️</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+    <!-- Add Modal -->
+    <div *ngIf="showAddForm" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+      <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-2xl relative">
+        <button (click)="showAddForm = false" class="absolute top-2 right-2 text-gray-500 hover:text-red-500">&times;</button>
+        <h2 class="text-xl font-semibold mb-4 text-gray-700">Add New Menu</h2>
+        <form (ngSubmit)="createMenu()" class="grid grid-cols-2 gap-4">
+          <input type="text" [(ngModel)]="newMenu.name" name="name" placeholder="Name" class="border px-3 py-2 rounded w-full" required />
+          <input type="text" [(ngModel)]="newMenu.description" name="description" placeholder="Description" class="border px-3 py-2 rounded w-full" required />
+          <input type="datetime-local" [(ngModel)]="newMenu.menuDate" name="menuDate" class="border px-3 py-2 rounded w-full" required />
+          <input type="number" [(ngModel)]="newMenu.quantity" name="quantity" class="border px-3 py-2 rounded w-full" placeholder="Quantity" required />
+          <label class="flex items-center col-span-2 gap-2">
+            <input type="checkbox" [(ngModel)]="newMenu.active" name="active" /> Active
+          </label>
+          <div class="col-span-2 flex justify-end gap-2">
+            <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Save</button>
+            <button type="button" (click)="showAddForm = false" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  
+    <!-- Edit Modal -->
+    <div *ngIf="showEditForm" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+      <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-2xl relative">
+        <button (click)="showEditForm = false" class="absolute top-2 right-2 text-gray-500 hover:text-red-500">&times;</button>
+        <h2 class="text-xl font-semibold mb-4 text-gray-700">Edit Menu</h2>
+        <form (ngSubmit)="updateMenu()" class="grid grid-cols-2 gap-4">
+          <input type="text" [(ngModel)]="editMenu.name" name="editName" placeholder="Name" class="border px-3 py-2 rounded w-full" required />
+          <input type="text" [(ngModel)]="editMenu.description" name="editDescription" placeholder="Description" class="border px-3 py-2 rounded w-full" required />
+          <input type="datetime-local" [(ngModel)]="editMenu.menuDate" name="editMenuDate" class="border px-3 py-2 rounded w-full" required />
+          <input type="number" [(ngModel)]="editMenu.quantity" name="editQuantity" class="border px-3 py-2 rounded w-full" placeholder="Quantity" required />
+          <label class="flex items-center col-span-2 gap-2">
+            <input type="checkbox" [(ngModel)]="editMenu.active" name="editActive" /> Active
+          </label>
+          <div class="col-span-2 flex justify-end gap-2">
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Update</button>
+            <button type="button" (click)="showEditForm = false" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

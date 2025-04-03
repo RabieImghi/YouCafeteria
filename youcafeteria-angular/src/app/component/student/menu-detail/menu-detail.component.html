@@ -1,0 +1,97 @@
+<app-header/>
+<main>
+  <!-- Hero Section -->
+  <section class="relative h-[300px] flex items-center">
+    <div class="absolute inset-0 z-0 bg-gray-800">
+      <img src="https://images.unsplash.com/photo-1543352634-99a5d50ae78e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80" alt="Menu details background" class="w-full h-full object-cover opacity-50">
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10 text-center">
+      <h1 class="text-4xl font-bold text-white mb-4">Menu Details</h1>
+      <p class="text-xl text-white max-w-2xl mx-auto">Explore the selected menu and its delicious dishes.</p>
+    </div>
+  </section>
+
+  <!-- Menu Details Section -->
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <!-- Menu Info -->
+        <div class="flex flex-col md:flex-row gap-8 mb-12">
+          <div class="md:w-1/2">
+            <div class="rounded-lg overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1577968897966-3d4325b36b61?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100&q=80" alt="Menu Image" class="w-full h-auto">
+            </div>
+          </div>
+
+          <div class="md:w-1/2">
+            <h2 class="text-2xl font-bold mb-4">About Menu</h2>
+            <p class="text-gray-600 mb-4">{{ menu.description }}</p>
+            <p class="text-gray-600 mb-4">Date: {{ menu.menuDate | date:'fullDate' }}</p>
+            <p class="text-gray-600 mb-4">Quantity: {{ menu.quantity }}</p>
+            <p class="text-gray-600 mb-6">Status: <span class="font-medium" [ngClass]="{ 'text-green-600': menu.active, 'text-red-600': !menu.active }">{{ menu.active ? 'Active' : 'Inactive' }}</span></p>
+            <button 
+            [routerLink]="['/reservation']"
+            [state]="{ menu: menu }"
+            class="bg-primary text-white px-6 py-3 rounded-md font-medium hover:bg-primary/90 transition-colors">
+              Make Reservation
+            </button>
+          </div>
+        </div>
+
+        <!-- Dish Categories -->
+        <div class="space-y-12">
+
+          <!-- Main Dishes -->
+          <div *ngIf="principalDishes.length">
+            <h3 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200">Main Dishes</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div *ngFor="let dish of principalDishes" class="flex gap-4">
+                <img src="https://images.unsplash.com/photo-1577968897966-3d4325b36b61?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100&q=80" alt="Dish image" class="w-24 h-24 rounded-md object-cover">
+                <div>
+                  <h4 class="text-lg font-semibold mb-1">{{ dish.name }}</h4>
+                  <p class="text-gray-600 text-sm mb-2">{{ dish.description }}</p>
+                  <p class="text-sm">Quantity: {{ dish.quantity }}</p>
+                  <span *ngIf="dish.available" class="text-green-600 text-xs">Available</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Starter Dishes -->
+          <div *ngIf="starterDishes.length">
+            <h3 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200">Starters</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div *ngFor="let dish of starterDishes" class="flex gap-4">
+                <img src="https://images.unsplash.com/photo-1577968897966-3d4325b36b61?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100&q=80" alt="Dish image" class="w-24 h-24 rounded-md object-cover">
+                <div>
+                  <h4 class="text-lg font-semibold mb-1">{{ dish.name }}</h4>
+                  <p class="text-gray-600 text-sm mb-2">{{ dish.description }}</p>
+                  <p class="text-sm">Quantity: {{ dish.quantity }}</p>
+                  <span *ngIf="dish.available" class="text-green-600 text-xs">Available</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dessert Dishes -->
+          <div *ngIf="dessertDishes.length">
+            <h3 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200">Desserts</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div *ngFor="let dish of dessertDishes" class="flex gap-4">
+                <img src="https://images.unsplash.com/photo-1577968897966-3d4325b36b61?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100&q=80" alt="Dish image" class="w-24 h-24 rounded-md object-cover">
+                <div>
+                  <h4 class="text-lg font-semibold mb-1">{{ dish.name }}</h4>
+                  <p class="text-gray-600 text-sm mb-2">{{ dish.description }}</p>
+                  <p class="text-sm">Quantity: {{ dish.quantity }}</p>
+                  <span *ngIf="dish.available" class="text-green-600 text-xs">Available</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
